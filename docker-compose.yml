@@ -1,0 +1,9 @@
+services:
+  dashcord:
+    build: .
+    container_name: dashcord
+    restart: unless-stopped
+    volumes:
+      - ./.env:/app/.env
+      - ./routes.json:/app/routes.json
+      - ./config:/app/config

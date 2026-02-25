@@ -1,0 +1,50 @@
+{
+  "commands": {
+    "ping": {
+      "endpoint": "https://hook.us1.make.com/your-webhook-id",
+      "method": "POST",
+      "allowed_users":[],
+      "allowed_channels":[]
+    },
+    "upload": {
+      "endpoint": "https://n8n.yourdomain.com/webhook/file-upload",
+      "method": "POST",
+      "accept_attachments": true,
+      "allow_without_command": true,
+      "attachment_rules": {
+        "extensions": [".json", ".csv"],
+        "max_bytes": 2500000,
+        "require_json": false
+      },
+      "attachment_reply": {
+        "mode": "errors",
+        "success_template": "📦 Successfully sent {ok} out of {total} files.",
+        "error_template": "❌ Upload errors ({bad}/{total}):\n{errors}"
+      }
+    }
+  },
+  "panels": {
+    "Server_Controls": {
+      "channels":["123456789012345678"],
+      "persist": {
+        "enabled": true,
+        "interval_seconds": 120,
+        "cleanup_old_active": true
+      },
+      "buttons":[
+        {
+          "label": "Restart Server",
+          "command": "ping",
+          "args": ["restart"],
+          "style": "danger"
+        },
+        {
+          "label": "Check Status",
+          "command": "ping",
+          "args": ["status"],
+          "style": "primary"
+        }
+      ]
+    }
+  }
+}

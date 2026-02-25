@@ -1,0 +1,24 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+secrets.env
+venv/
+env/
+
+# scripts
+push_to_webserver.sh
+
+# Data and configurations (users should create their own)
+config/
+routes.json
+
+# Logs
+*.log
+
+# Docker
+.dockerignore
+docker-compose.override.yml
